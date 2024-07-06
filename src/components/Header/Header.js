@@ -7,7 +7,7 @@ import Icon from "../Icon";
 import UnstyledButton from "../UnstyledButton";
 import SuperHeader from "../SuperHeader";
 import MobileMenu from "../MobileMenu";
-import VisualyHidden from "../VisuallyHidden"
+import VisualyHidden from "../VisuallyHidden";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -35,21 +35,15 @@ const Header = () => {
         <MobileActions>
           <UnstyledButton>
             <Icon id="shopping-bag" />
-            <VisualyHidden>
-              Open cart
-            </VisualyHidden>
+            <VisualyHidden>Open cart</VisualyHidden>
           </UnstyledButton>
           <UnstyledButton>
             <Icon id="search" />
-            <VisualyHidden>
-              Search
-            </VisualyHidden>
+            <VisualyHidden>Search</VisualyHidden>
           </UnstyledButton>
-          <UnstyledButton>
+          <UnstyledButton onClick={() => setShowMobileMenu(true)}>
             <Icon id="menu" />
-            <VisualyHidden>
-              Open menu
-            </VisualyHidden>
+            <VisualyHidden>Open menu</VisualyHidden>
           </UnstyledButton>
         </MobileActions>
         <Filler />
@@ -67,8 +61,8 @@ const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
-  height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+  overflow: auto;
 
   @media ${QUERIES.tabletAndSmaller} {
     border-top: 4px solid ${COLORS.gray[900]};
@@ -79,7 +73,7 @@ const MainHeader = styled.div`
 
 const DesktopNav = styled.nav`
   display: flex;
-  gap: 48px;
+  gap: clamp(1rem, 9.2vw - 4.5rem, 3.5rem);
   margin: 0px 48px;
 
   @media ${QUERIES.tabletAndSmaller} {
@@ -95,7 +89,7 @@ const MobileActions = styled.div`
     gap: 32px;
   }
 
-  @media ${QUERIES.phoneAndSmaller}{
+  @media ${QUERIES.phoneAndSmaller} {
     gap: 16px;
   }
 `;
@@ -103,17 +97,17 @@ const MobileActions = styled.div`
 const LogoWrapper = styled.div`
   flex: 1;
 
-  @media ${QUERIES.tabletAndSmaller}{
+  @media ${QUERIES.tabletAndSmaller} {
     flex: revert;
   }
 `;
 
 const Filler = styled.div`
   flex: 1;
-  @media ${QUERIES.tabletAndSmaller}{
+  @media ${QUERIES.tabletAndSmaller} {
     display: none;
   }
-`
+`;
 
 const NavLink = styled.a`
   font-size: 1.125rem;
